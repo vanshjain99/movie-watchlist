@@ -18,7 +18,7 @@ document.getElementById("search-btn").addEventListener("click", ()=>{
 })
 
 async function getId(movieName){
-    const res = await fetch(`http://www.omdbapi.com/?apikey=613887e4&s=${movieName}&type=movie`)
+    const res = await fetch(`https://www.omdbapi.com/?apikey=613887e4&s=${movieName}&type=movie`)
     const data = await res.json()
     const searchRes = data.Search
     //storing imdbID in array
@@ -31,7 +31,7 @@ async function getId(movieName){
 async function storeData(){
         //fetching through their id's and storing in array
         for(let i in imdbIdArray){
-            let res = await fetch(`http://www.omdbapi.com/?apikey=613887e4&i=${imdbIdArray[i]}`)
+            let res = await fetch(`https://www.omdbapi.com/?apikey=613887e4&i=${imdbIdArray[i]}`)
             let data = await res.json()
             console.log(data)
             searchResArray.push(data)

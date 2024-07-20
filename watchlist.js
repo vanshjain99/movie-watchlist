@@ -7,7 +7,7 @@ let resultHtml = ``
 getWatchlist()
 async function getWatchlist(){
     for (let i in watchlistIDArray){
-        let res = await fetch(`http://www.omdbapi.com/?apikey=613887e4&i=${watchlistIDArray[i]}`)
+        let res = await fetch(`https://www.omdbapi.com/?apikey=613887e4&i=${watchlistIDArray[i]}`)
         let data = await res.json()
         watchlistMovieArray.push(data)
     }
