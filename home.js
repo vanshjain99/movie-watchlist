@@ -1,18 +1,25 @@
-
-
 let imdbIdArray = []
 let searchResArray = []
+let watchlistIDArray = [];
 let resultHtml = ``
-
+let watchlistEls
 const searchResultEl = document.getElementById("search-result")
 const searchBtnEl = document.getElementById("search-btn")
 
 
-getId()
-async function getId(){
-    const res = await fetch("http://www.omdbapi.com/?apikey=613887e4&s=blade+runner")
+document.getElementById("search-btn").addEventListener("click", ()=>{
+    searchResultEl.innerHTML = ``
+    resultHtml = ``
+    searchResArray = []
+    imdbIdArray = []
+    let movieName = document.getElementById("movie-input").value
+    movieName = movieName.replace(/\s/g, '+')
+    getId(movieName)
+})
+
+async function getId(movieName){
+    const res = await fetch(`http://www.omdbapi.com/?apikey=613887e4&s=${movieName}&type=movie`)
     const data = await res.json()
-    console.log(data)
     const searchRes = data.Search
     //storing imdbID in array
     for(let movie in searchRes){
@@ -26,6 +33,7 @@ async function storeData(){
         for(let i in imdbIdArray){
             let res = await fetch(`http://www.omdbapi.com/?apikey=613887e4&i=${imdbIdArray[i]}`)
             let data = await res.json()
+            console.log(data)
             searchResArray.push(data)
         }
         renderHtml(searchResArray)
@@ -53,7 +61,7 @@ function renderHtml(arr){
             <p class="genre">${movieGenre}</p>
             <div class="watchlist-btn-container">
                 <div class="watchlist-btn">
-                    <img src="assets/Icon.png"/>
+                    <img class="watchlist-icon" src="assets/Icon.png"/>
                     <p>Watchlist</p>
                 </div>
             </div>
@@ -65,5 +73,21 @@ function renderHtml(arr){
     }
 
     searchResultEl.innerHTML = resultHtml
+    watchlistEls = document.querySelectorAll(".watchlist-btn-container")
+    watchlistBtnWork(watchlistEls)
+}
+
+function watchlistBtnWork(watchlistEls){
+    watchlistEls.forEach(element => {
+        element.addEventListener("click", (e)=>{
+            let imageIconNode = e.currentTarget.children[0].querySelector('.watchlist-icon')
+            imageIconNode.src = "assets/icon2.png"
+            let parentNodeId = e.currentTarget.parentNode.id
+            watchlistIDArray.push(parentNodeId)
+            console.log(watchlistIDArray)  
+            localStorage.setItem("movieIDs", JSON.stringify(watchlistIDArray))
+        })
+    })
+    
 }
 
