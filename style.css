@@ -6,6 +6,8 @@ head,body{
     background-color: black;
     color: white;
     font-family: "Inter", sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #header-img,header{
