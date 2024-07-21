@@ -34,7 +34,7 @@ function renderHtml(searchResArray){
             <p class="genre">${movieGenre}</p>
             <div class="watchlist-btn-container">
                 <div class="watchlist-btn">
-                    <img class="watchlist-icon" src="assets/Icon.png"/>
+                    <img class="watchlist-icon" src="assets/icon2.png"/>
                     <p>Watchlist</p>
                 </div>
             </div>

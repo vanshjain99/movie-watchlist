@@ -84,6 +84,39 @@ a{
 }
 /* --- main --- */
 
+
+#loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 6em;
+    height: 6em;
+    border: 1em solid #f3f3f3;
+    border-top: 1em solid #9c41f2;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+}
+#loading.display {
+    visibility: visible;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.display-none-class{
+    display: none;
+}
 #explore-img{
     width: 30vw;
     position: absolute;

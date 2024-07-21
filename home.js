@@ -5,6 +5,22 @@ let resultHtml = ``
 let watchlistEls
 const searchResultEl = document.getElementById("search-result")
 const searchBtnEl = document.getElementById("search-btn")
+const exploreImgEl = document.getElementById("explore-img")
+const loader = document.querySelector("#loading");
+// loader
+
+function displayLoading() {
+    loader.classList.add("display");
+    // to stop loading after some time
+    setTimeout(() => {
+        loader.classList.remove("display");
+    }, 5000);
+}
+
+// hiding loading 
+function hideLoading() {
+    loader.classList.remove("display");
+}
 
 
 document.getElementById("search-btn").addEventListener("click", ()=>{
@@ -12,6 +28,8 @@ document.getElementById("search-btn").addEventListener("click", ()=>{
     resultHtml = ``
     searchResArray = []
     imdbIdArray = []
+    displayLoading()
+    exploreImgEl.classList.add("display-none-class")
     let movieName = document.getElementById("movie-input").value
     movieName = movieName.replace(/\s/g, '+')
     getId(movieName)
@@ -72,6 +90,7 @@ function renderHtml(arr){
 
     }
 
+    hideLoading()
     searchResultEl.innerHTML = resultHtml
     watchlistEls = document.querySelectorAll(".watchlist-btn-container")
     watchlistBtnWork(watchlistEls)
