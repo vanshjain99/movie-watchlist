@@ -8,13 +8,8 @@ const searchBtnEl = document.getElementById("search-btn")
 const exploreImgEl = document.getElementById("explore-img")
 const loader = document.querySelector("#loading");
 // loader
-
 function displayLoading() {
     loader.classList.add("display");
-    // to stop loading after some time
-    setTimeout(() => {
-        loader.classList.remove("display");
-    }, 5000);
 }
 
 // hiding loading 

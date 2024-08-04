@@ -6,8 +6,6 @@ head,body{
     background-color: black;
     color: white;
     font-family: "Inter", sans-serif;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 #header-img,header{
@@ -51,10 +49,14 @@ header p{
 input{
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    -webkit-user-select: none;
+    user-select: none;
 }
 button{
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+    -webkit-user-select: none;
+    user-select: none;  
 }
 input,button{
     flex-grow: 1;
